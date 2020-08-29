@@ -1,0 +1,42 @@
+.question-modal {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.question-modal__box {
+    background-color: white;
+    width: 700px;
+    min-height: 300px;
+    max-height: 700px;
+    overflow-y: auto;
+    z-index: 1001;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.question-modal__box__question {
+    display: flex;
+    padding: 20px 0px;
+}
+
+.question-modal__box__question > div {
+    padding-right: 20px;
+}
+
+.question-modal__box__question > div > label {
+    padding-right: 10px;
+}
+
+.question-modal__box > button {
+    margin: 20px 0px;
+    width: 20%;
+}

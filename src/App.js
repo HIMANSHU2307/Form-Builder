@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/molecules/Header';
+import FormList from './components/organisms/FormList/FormList';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import CreateForm from './components/organisms/CreateForm';
+import { Layout } from './components/organisms/Layout/Layout';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+      <Header />
+      <Layout>
+        <Switch>
+          <Route exact path='/' component={FormList} />
+          <Route exact path='/addform' component={CreateForm} />
+        </Switch> 
+      </Layout>  
+    </div>  
   );
 }
 
