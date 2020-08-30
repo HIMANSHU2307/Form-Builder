@@ -31,7 +31,10 @@ const CreateForm = ({questions, onSaveForm, onResetForm, history}) => {
             url: `form/${id}`
         }
         e.preventDefault();
-        debugger;
+        if(!questions.length){
+            alert('No questions added to the Form');
+            return false;
+        }
         onSaveForm(finalForm);
         setFormTitle('');
         history.push('/');

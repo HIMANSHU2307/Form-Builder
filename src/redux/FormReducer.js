@@ -14,7 +14,6 @@ const reducer = (state = initialState, action) => {
             break;
 
         case "ADD_FORM_ASYNC":
-            debugger;
             newState = {...newState, formTitle: action.value};
             break;   
             

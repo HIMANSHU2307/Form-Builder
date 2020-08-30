@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 const FormList = () => {
     const formList = localStorage.getItem('formList') ? JSON.parse(localStorage.getItem('formList')) : [];
-    console.log(formList);
 
     const getDate = (id) => {
         const date = new Date(id);

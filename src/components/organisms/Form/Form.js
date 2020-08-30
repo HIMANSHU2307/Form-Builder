@@ -8,11 +8,9 @@ const Form = ({ match }) => {
 
     useEffect(() => {
         let formSaved = JSON.parse(localStorage.getItem('formList'));
-        debugger;
         let arr = [];
         arr = formSaved.filter(el => el.id === (match.params.id));
         setForm(arr[0]);
-        console.log(formSaved[0], formSaved);
     }, [])
 
     return (

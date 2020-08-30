@@ -54,7 +54,6 @@ export const QuestionModal = ({ updateModal, onAddQuestion }) => {
       return;
     }
     updateModal(false);
-    debugger;
     onAddQuestion(question);
   }
 
