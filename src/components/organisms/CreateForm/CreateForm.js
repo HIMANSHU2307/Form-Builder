@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import OrderedList from '../../molecules/OrderedList/OrderedList';
 import ListItem from '../../atoms/ListItem/ListItem';
 
-const CreateForm = ({questions, onSaveForm, onResetForm}) => {
+const CreateForm = ({questions, onSaveForm, onResetForm, history}) => {
 
     const [showModal, setShowModal] = useState(false);
     const [formTitle, setFormTitle] = useState('');
@@ -23,28 +23,37 @@ const CreateForm = ({questions, onSaveForm, onResetForm}) => {
     }
 
     const handleSubmit = (e) => {
+        const id = Date.now().toString()
         const finalForm = {
             formTitle,
-            questions
+            questions,
+            id,
+            url: `form/${id}`
         }
         e.preventDefault();
         debugger;
         onSaveForm(finalForm);
         setFormTitle('');
+        history.push('/');
     }
 
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor="form-title">Form Title</label>
-            <input type="text" name="formTitle" id="form-title" onChange={handleTitleChange} value={formTitle} required/>
-            <button type="button" onClick={() => handleModal(true)}>Add Question</button>
+            <div>
+                <label htmlFor="form-title">Form Title</label>
+                <input type="text" name="formTitle" id="form-title" onChange={handleTitleChange} value={formTitle} required/>
+            </div>
+            
             {showModal && <QuestionModal updateModal={handleModal}/>}
             {
+                
                 !!questions?.length && 
+                <>
                 <OrderedList>
                     {
 
                         questions.map((question, i) => (
+                            <>
                             <div key={i}>
                                 <div>
                                     <p>
@@ -57,7 +66,7 @@ const CreateForm = ({questions, onSaveForm, onResetForm}) => {
                                 </div>
                                 <OrderedList>
                                     {
-                                        question.questionOption.map((option, i) => (
+                                        question.questionOption && question.questionOption.map((option, i) => (
                                             <ListItem key={i}>
                                                 {option}
                                             </ListItem>
@@ -65,11 +74,14 @@ const CreateForm = ({questions, onSaveForm, onResetForm}) => {
                                     }
                                 </OrderedList>
                             </div>
+                            <hr/>
+                            </>
                         ))
                     }
                 </OrderedList>
+                </>
             }
-
+            <button type="button" onClick={() => handleModal(true)}>Add Question</button>
             <button type="submit">Save form</button>
         </form>
     )

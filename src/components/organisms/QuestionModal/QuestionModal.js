@@ -6,7 +6,9 @@ import ListItem from "../../atoms/ListItem/ListItem";
 
 export const QuestionModal = ({ updateModal, onAddQuestion }) => {
   const [currentOption, setCurrentOption] = useState("");
+  const [nameError, setNameError] = useState("");
   const [question, updateQuestion] = useState({questionType : "Text"})
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,8 +33,26 @@ export const QuestionModal = ({ updateModal, onAddQuestion }) => {
     setCurrentOption('');
   }
 
+  const validateInput = (e) => {
+    let isValid = true;
+    if(!question.questionName){
+      setNameError('warning');
+      isValid = false;
+      return isValid;
+    }
+    if(question.questionType !== 'Text' && !question.questionOption.length){
+      setNameError('warning');
+      isValid = false;
+      return isValid;
+    }
+  }
+
   const submitQuestion = (e) => {
     e.preventDefault();
+    if(!question.questionName){
+      setNameError('warning');
+      return;
+    }
     updateModal(false);
     debugger;
     onAddQuestion(question);
@@ -43,12 +63,16 @@ export const QuestionModal = ({ updateModal, onAddQuestion }) => {
     <div className="question-modal">
 
       <div className="question-modal__box">
-        <h2>Add Question</h2>
+        <div className="question-modal__box_header">
+          <h2>Add Question</h2>
+          <button type="button" onClick={() => updateModal(false)}>X</button>
+        </div>
+      
 
         <div className="question-modal__box__question">
           <div>
             <label htmlFor="question-name">Question Title</label>
-            <input name="questionName" id="question-name" type="text" onChange={handleChange} required/>
+            <input className={nameError} name="questionName" id="question-name" type="text" onChange={handleChange} required/>
           </div>
           <div>
             <label htmlFor="question-type">Question Title</label>
@@ -72,7 +96,7 @@ export const QuestionModal = ({ updateModal, onAddQuestion }) => {
               <OrderedList>
                 {question.questionOption?.map((el) => <ListItem key={el}>{el}</ListItem>)}
               </OrderedList>
-              <input placeholder="Options" name="currentOption" onChange={handleOptionChange} value={currentOption}/>
+              <input type="text" className={nameError} placeholder="Options" name="currentOption" onChange={handleOptionChange} value={currentOption}/>
               <button type="button" onClick={addQuestionOption}>+</button>
             </div>
           )}
@@ -80,9 +104,6 @@ export const QuestionModal = ({ updateModal, onAddQuestion }) => {
         
         <button type="button" onClick={submitQuestion}>
           Save
-        </button>
-        <button type="button" onClick={() => updateModal(false)}>
-          Close
         </button>
       </div>
     </div>

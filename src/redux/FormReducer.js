@@ -1,6 +1,8 @@
 const initialState = {
+    id: '',
     formTitle: '',
-    questions: []
+    questions: [],
+    url: ''
 };
 
 const reducer = (state = initialState, action) => {
@@ -12,8 +14,9 @@ const reducer = (state = initialState, action) => {
             break;
 
         case "ADD_FORM_ASYNC":
+            debugger;
             newState = {...newState, formTitle: action.value};
-            break;  
+            break;   
             
         case "RESET_FORM":
             newState = initialState;

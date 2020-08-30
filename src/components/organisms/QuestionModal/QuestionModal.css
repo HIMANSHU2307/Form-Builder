@@ -32,11 +32,23 @@
     padding-right: 20px;
 }
 
-.question-modal__box__question > div > label {
-    padding-right: 10px;
-}
 
 .question-modal__box > button {
     margin: 20px 0px;
     width: 20%;
+}
+
+.question-modal__box_header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.question-modal__box_header button {
+    width: 30px;
+}
+
+.warning {
+    border-color: red;
 }
