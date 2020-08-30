@@ -20,6 +20,7 @@ const FormList = () => {
             <h2>Form List</h2>
             <hr/>
             <table style={{width:'100%'}}>
+              <tbody>
                 <tr>
                   <th>Sr No.</th>
                   <th>Form Title</th>
@@ -28,7 +29,7 @@ const FormList = () => {
                 </tr>
                 {
                     formList.map((form, i) => 
-                        <tr>
+                        <tr key={form.url}>
                           <td>{i + 1}</td>
                           <td>{form.formTitle}</td>
                           <td><Link to={`${form.url}`} target="_blank">
@@ -41,6 +42,7 @@ const FormList = () => {
                         </tr>
                     )
                 }
+              </tbody>  
             </table>
         </main>
     )

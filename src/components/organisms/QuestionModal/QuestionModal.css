@@ -47,6 +47,7 @@
 
 .question-modal__box_header button {
     width: 30px;
+    padding: 0;
 }
 
 .warning {

@@ -71,7 +71,11 @@ export const QuestionModal = ({ updateModal, onAddQuestion }) => {
         <div className="question-modal__box__question">
           <div>
             <label htmlFor="question-name">Question Title</label>
-            <input className={nameError} name="questionName" id="question-name" type="text" onChange={handleChange} required/>
+            <input className={nameError} 
+              name="questionName" 
+              id="question-name" 
+              placeholder="Enter Question"
+              type="text" onChange={handleChange} required/>
           </div>
           <div>
             <label htmlFor="question-type">Question Title</label>

@@ -44,7 +44,12 @@ const CreateForm = ({questions, onSaveForm, onResetForm, history}) => {
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="form-title">Form Title</label>
-                <input type="text" name="formTitle" id="form-title" onChange={handleTitleChange} value={formTitle} required/>
+                <input type="text" 
+                    name="formTitle" 
+                    id="form-title" 
+                    onChange={handleTitleChange} 
+                    placeholder="Enter Form Name"
+                    value={formTitle} required/>
             </div>
             
             {showModal && <QuestionModal updateModal={handleModal}/>}

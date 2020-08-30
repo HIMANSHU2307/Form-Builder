@@ -16,7 +16,7 @@ label {
   padding-right: 10px;
 }
 
-input {
+input[type=text], select {
   height: 20px;
 }
 
@@ -27,4 +27,12 @@ button {
   outline: 0;
   height: 30px;
   min-width: 30px;
+  border-radius: 5px;
+  padding: 0px 20px;
+}
+
+button:active {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
 }
