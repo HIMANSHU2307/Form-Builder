@@ -55,13 +55,11 @@ const CreateForm = ({questions, onSaveForm, onResetForm, history}) => {
             {showModal && <QuestionModal updateModal={handleModal}/>}
             {
                 
-                !!questions?.length && 
-                <>
+                !!questions?.length &&
                 <OrderedList>
                     {
 
                         questions.map((question, i) => (
-                            <>
                             <div key={i}>
                                 <div>
                                     <p>
@@ -81,13 +79,11 @@ const CreateForm = ({questions, onSaveForm, onResetForm, history}) => {
                                         ))
                                     }
                                 </OrderedList>
-                            </div>
                             <hr/>
-                            </>
+                            </div>
                         ))
                     }
                 </OrderedList>
-                </>
             }
             <button type="button" onClick={() => handleModal(true)}>Add Question</button>
             <button type="submit">Save form</button>
